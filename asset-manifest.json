@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/biotouch_signature_rebrand/static/css/main.c2cab247.css",
+    "main.js": "/biotouch_signature_rebrand/static/js/main.4a499433.js",
+    "index.html": "/biotouch_signature_rebrand/index.html",
+    "main.c2cab247.css.map": "/biotouch_signature_rebrand/static/css/main.c2cab247.css.map",
+    "main.4a499433.js.map": "/biotouch_signature_rebrand/static/js/main.4a499433.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c2cab247.css",
+    "static/js/main.4a499433.js"
+  ]
+}
