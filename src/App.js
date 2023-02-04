@@ -3,9 +3,13 @@ import { useState } from 'react';
 import { Container, Row, Col, Form, Button, Image } from 'react-bootstrap';
 
 function App() {
-  const submit = (event) => {
+  const submit = async (event) => {
     event.preventDefault();
 
+    postData()
+      .then((data) => {
+        console.log(data);
+      });
     const html = setHtml(firstName, lastName, email, phone, fax, job);
     const blob = new Blob([html], { type: "text/plain" });
     const url = URL.createObjectURL(blob);
@@ -13,6 +17,23 @@ function App() {
     link.download = "Biotouch_Email_Signature.html";
     link.href = url;
     link.click();
+  }
+
+  async function postData(url = 'http://localhost:3001', data = { firstName: firstName, lastName: lastName }) {
+    // Default options are marked with *
+    const response = await fetch(url, {
+      method: 'POST', // *GET, POST, PUT, DELETE, etc.
+      mode: 'cors', // no-cors, *cors, same-origin
+      cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+      credentials: 'same-origin', // include, *same-origin, omit
+      headers: {
+        'Content-Type': 'application/json'
+        // 'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      redirect: 'follow', // manual, *follow, error
+      referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+    });
+    return response.json();
   }
 
   const [email, setEmail] = useState('');
